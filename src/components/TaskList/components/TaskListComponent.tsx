@@ -44,7 +44,7 @@ export const TaskListComponent = observer(() => {
           'flex flex-col max-h-[600px] overflow-auto w-[100%] gap-[8px] px-[10px]'
         }
       >
-        {taskStore.tasks.length &&
+        {taskStore.tasks.length ? (
           taskStore.tasks.map((task, index) => {
             if (taskStore.tasks.length - 1 === index) {
               return (
@@ -79,7 +79,10 @@ export const TaskListComponent = observer(() => {
                 )}
               />
             )
-          })}
+          })
+        ) : (
+          <div className={'text-center py-[100px] text-l'}>Empty</div>
+        )}
       </div>
       {taskStore.isLoading && (
         <div className={'self-center py-[100px]'}>
